@@ -67,6 +67,67 @@
     <h1>Pi Network Sabah Community</h1>
     <p>BM | English | 中文 | இந்தியா</p>
   </header> 
+  <!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalkulator Harga Pi Network</title>
+  <style>
+    .calculator {
+      margin: 20px;
+      font-family: Arial, sans-serif;
+    }
+    .calculator input {
+      padding: 8px;
+      font-size: 16px;
+      margin-right: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .calculator button {
+      padding: 8px 16px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .calculator button:hover {
+      background-color: #218838;
+    }
+    .pi-price-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+    .pi-price-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <label for="pi-amount">Masukkan Bilangan Pi Coin:</label>
+    <input type="number" id="pi-amount" placeholder="Contoh: 100" min="0">
+    <button onclick="calculatePiValue()">Kira Nilai (USD)</button>
+    <p id="pi-value">Nilai: $0.00</p>
+    <a href="https://www.bitgetapp.com/price/pi-network/usd" class="pi-price-button">Semak Harga Terkini di Bitget</a>
+  </div>
+
+  <script>
+    function calculatePiValue() {
+      const piAmount = document.getElementById('pi-amount').value;
+      const piPriceUSD = 0.5218; // Harga manual dari OKX pada 11 Julai 2025
+      const totalValue = piAmount * piPriceUSD;
+      document.getElementById('pi-value').innerText = `Nilai: $${totalValue.toFixed(2)} USD`;
+    }
+  </script>
+</body>
+</html>
   <nav>
     <a href="#home">Utama</a>
     <a href="#group">WhatsApp Group</a>
