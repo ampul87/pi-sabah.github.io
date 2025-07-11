@@ -117,44 +117,7 @@
   </div>
 
   <h1 id="greeting">Selamat Datang ke Laman Web Kami!</h1>
-  <p id="description">Ini adalah laman web contoh dalam Bahasa Malaysia.</p>
-
-  <script>
-    function changeLanguage() {
-      const language = document.getElementById('language').value;
-      const translations = {
-        ms: {
-          greeting: 'Selamat Datang ke Laman Web Kami!',
-          description: 'Ini adalah laman web contoh dalam Bahasa Malaysia.'
-        },
-        zh: {
-          greeting: '欢迎访问我们的网站！',
-          description: '这是一个用中文的示例网站。'
-        },
-        ta: {
-          greeting: 'எங்கள் இணையதளத்திற்கு வரவேற்கிறோம்!',
-          description: 'இது தமிழில் ஒரு மாதிரி இணையதளம்.'
-        },
-        en: {
-          greeting: 'Welcome to Our Website!',
-          description: 'This is a sample website in English.'
-        }
-      };
-
-      const content = translations[language];
-      document.getElementById('greeting').innerText = content.greeting;
-      document.getElementById('description').innerText = content.description;
-      localStorage.setItem('language', language);
-    }
-
-    window.onload = function() {
-      const savedLanguage = localStorage.getItem('language') || 'ms';
-      document.getElementById('language').value = savedLanguage;
-      changeLanguage();
-    };
-  </script>
-</body>
-</html>
+  <p id="description">Ini adalah laman web contoh dalam Bahasa Malaysia.</p> 
 </div>
   <nav>
     <a href="#home">Utama</a>
