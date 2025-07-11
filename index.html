@@ -67,7 +67,7 @@
     <h1>Pi Network Sabah Community</h1>
     <p>BM | English | 中文 | இந்தியா</p>
   </header> 
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ms">
 <head>
   <meta charset="UTF-8">
@@ -113,8 +113,9 @@
   <div class="calculator">
     <label for="pi-amount">Masukkan Bilangan Pi Coin:</label>
     <input type="number" id="pi-amount" placeholder="Contoh: 100" min="0">
-    <button onclick="calculatePiValue()">Kira Nilai (USD)</button>
-    <p id="pi-value">Nilai: $0.00</p>
+    <button onclick="calculatePiValue()">Kira Nilai</button>
+    <p id="pi-value-usd">Nilai dalam USD: $0.00</p>
+    <p id="pi-value-myr">Nilai dalam MYR: RM 0.00</p>
     <a href="https://www.bitgetapp.com/price/pi-network/usd" class="pi-price-button">Semak Harga Terkini di Bitget</a>
   </div>
 
@@ -122,8 +123,13 @@
     function calculatePiValue() {
       const piAmount = document.getElementById('pi-amount').value;
       const piPriceUSD = 0.5218; // Harga manual dari OKX pada 11 Julai 2025
-      const totalValue = piAmount * piPriceUSD;
-      document.getElementById('pi-value').innerText = `Nilai: $${totalValue.toFixed(2)} USD`;
+      const usdToMYR = 4.70; // Kadar pertukaran USD ke MYR (kemas kini jika perlu)
+      
+      const totalValueUSD = piAmount * piPriceUSD;
+      const totalValueMYR = totalValueUSD * usdToMYR;
+
+      document.getElementById('pi-value-usd').innerText = `Nilai dalam USD: $${totalValueUSD.toFixed(2)}`;
+      document.getElementById('pi-value-myr').innerText = `Nilai dalam MYR: RM ${totalValueMYR.toFixed(2)}`;
     }
   </script>
 </body>
