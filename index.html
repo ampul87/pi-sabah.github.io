@@ -1,16 +1,9 @@
+ HTML
 <!DOCTYPE html>
 <html lang="ms">
 <head>
   <meta charset="UTF-8">
   <title>Kaunter Pelawat</title>
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXX');
-  </script>
   <style>
     .visitor-counter {
       margin: 20px;
@@ -32,30 +25,7 @@
     .pi-price-button:hover {
       background-color: #0056b3;
     }
-  </style>
-</head>
-<body>
-  <div class="visitor-counter">
-    <p>Jumlah Pelawat: <span id="visitor-count">Memuat...</span></p>
-    <a href="https://www.bitgetapp.com/price/pi-network/usd" class="pi-price-button">Semak Harga Pi Network di Bitget</a>
-  </div>
-
-  <script>
-    // Nota: Memerlukan backend untuk mengambil data pelawat dari Google Analytics API
-    async function fetchVisitorCount() {
-      try {
-        const response = await fetch('/api/visitor-count'); // Sediakan endpoint backend
-        const data = await response.json();
-        document.getElementById('visitor-count').innerText = data.visitorCount || 'Tidak tersedia';
-      } catch (error) {
-        document.getElementById('visitor-count').innerText = 'Gagal memuat';
-        console.error('Gagal mengambil bilangan pelawat:', error);
-      }
-    }
-    window.onload = fetchVisitorCount;
-  </script>
-</body>
-</html>
+  </style> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
