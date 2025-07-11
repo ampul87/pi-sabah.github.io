@@ -67,7 +67,7 @@
     <h1>Pi Network Sabah Community</h1>
     <p>BM | English | 中文 | இந்தியா</p>
   </header> 
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="ms">
 <head>
   <meta charset="UTF-8">
@@ -107,6 +107,9 @@
     .pi-price-button:hover {
       background-color: #0056b3;
     }
+    .error {
+      color: red;
+    }
   </style>
 </head>
 <body>
@@ -114,23 +117,74 @@
     <label for="pi-amount">Masukkan Bilangan Pi Coin:</label>
     <input type="number" id="pi-amount" placeholder="Contoh: 100" min="0">
     <button onclick="calculatePiValue()">Kira Nilai</button>
+    <p id="pi-price-usd">Harga Pi Network (USD): Memuat...</p>
+    <p id="pi-price-myr">Harga Pi Network (MYR): Memuat...</p>
     <p id="pi-value-usd">Nilai dalam USD: $0.00</p>
     <p id="pi-value-myr">Nilai dalam MYR: RM 0.00</p>
+    <p id="error" class="error"></p>
     <a href="https://www.bitgetapp.com/price/pi-network/usd" class="pi-price-button">Semak Harga Terkini di Bitget</a>
   </div>
 
   <script>
-    function calculatePiValue() {
-      const piAmount = document.getElementById('pi-amount').value;
-      const piPriceUSD = 0.5218; // Harga manual dari OKX pada 11 Julai 2025
-      const usdToMYR = 4.70; // Kadar pertukaran USD ke MYR (kemas kini jika perlu)
-      
-      const totalValueUSD = piAmount * piPriceUSD;
-      const totalValueMYR = totalValueUSD * usdToMYR;
-
-      document.getElementById('pi-value-usd').innerText = `Nilai dalam USD: $${totalValueUSD.toFixed(2)}`;
-      document.getElementById('pi-value-myr').innerText = `Nilai dalam MYR: RM ${totalValueMYR.toFixed(2)}`;
+    // Fungsi untuk mengambil harga Pi Network dari CoinGecko
+    async function fetchPiPrice() {
+      try {
+        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=pi-network&vs_currencies=usd');
+        const data = await response.json();
+        return data['pi-network'].usd;
+      } catch (error) {
+        document.getElementById('error').innerText = 'Gagal mengambil harga Pi Network. Sila cuba lagi kemudian.';
+        return null;
+      }
     }
+
+    // Fungsi untuk mengambil kadar pertukaran USD ke MYR
+    async function fetchExchangeRate() {
+      try {
+        const response = await fetch('https://open.exchangerate-api.com/v6/latest?base=USD&access_key=YOUR_API_KEY');
+        const data = await response.json();
+        return data.rates.MYR;
+      } catch (error) {
+        document.getElementById('error').innerText = 'Gagal mengambil kadar pertukaran MYR. Sila cuba lagi kemudian.';
+        return null;
+      }
+    }
+
+    // Fungsi untuk mengemas kini harga semasa
+    async function updatePrices() {
+      const piPriceUSD = await fetchPiPrice();
+      const usdToMYR = await fetchExchangeRate();
+
+      if (piPriceUSD && usdToMYR) {
+        const piPriceMYR = piPriceUSD * usdToMYR;
+        document.getElementById('pi-price-usd').innerText = `Harga Pi Network (USD): $${piPriceUSD.toFixed(4)}`;
+        document.getElementById('pi-price-myr').innerText = `Harga Pi Network (MYR): RM ${piPriceMYR.toFixed(4)}`;
+      }
+    }
+
+    // Fungsi untuk mengira nilai berdasarkan input pengguna
+    async function calculatePiValue() {
+      const piAmount = document.getElementById('pi-amount').value;
+      const piPriceUSD = await fetchPiPrice();
+      const usdToMYR = await fetchExchangeRate();
+
+      if (piPriceUSD && usdToMYR && piAmount >= 0) {
+        const totalValueUSD = piAmount * piPriceUSD;
+        const totalValueMYR = totalValueUSD * usdToMYR;
+        document.getElementById('pi-value-usd').innerText = `Nilai dalam USD: $${totalValueUSD.toFixed(2)}`;
+        document.getElementById('pi-value-myr').innerText = `Nilai dalam MYR: RM ${totalValueMYR.toFixed(2)}`;
+        document.getElementById('error').innerText = '';
+      } else {
+        document.getElementById('pi-value-usd').innerText = 'Nilai dalam USD: $0.00';
+        document.getElementById('pi-value-myr').innerText = 'Nilai dalam MYR: RM 0.00';
+        if (!piPriceUSD || !usdToMYR) {
+          document.getElementById('error').innerText = 'Gagal mengira nilai. Sila cuba lagi kemudian.';
+        }
+      }
+    }
+
+    // Kemas kini harga semasa apabila halaman dimuat
+    window.onload = updatePrices;
   </script>
 </body>
 </html>
