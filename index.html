@@ -1,9 +1,14 @@
- <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="ms">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pi Network Sabah Community</title>
+  <meta name="description" content="Komuniti Pi Network Sabah - Info terkini, group WhatsApp, dan kalkulator nilai Pi Coin.">
+  <meta name="keywords" content="Pi Network, Sabah, Pi Coin, kalkulator Pi, komunitas Pi">
+  <meta name="author" content="Pi Network Sabah Community">
+  <link rel="icon" href="favicon.png" type="image/png">
   <style>
     body {
       margin: 0;
@@ -83,6 +88,25 @@
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
+    .article-card {
+      margin-bottom: 1.5em;
+      padding: 1em;
+      background-color: #fff8e1;
+      border-left: 5px solid #fbc02d;
+      border-radius: 8px;
+    }
+    .article-title a {
+      color: #bf360c;
+      text-decoration: none;
+    }
+    .article-title a:hover {
+      text-decoration: underline;
+    }
+    .article-desc {
+      margin: 0.5em 0 0 1.2em;
+      color: #444;
+      font-size: 0.95em;
+    }
     @media (max-width: 600px) {
       nav { flex-direction: column; }
       nav a { margin: 0.5em 0; }
@@ -91,10 +115,10 @@
 </head>
 <body>
   <header>
-    <img src="1000103795.png" alt="Logo Pi Sabah">
+    <img src="1000103795.png" alt="Logo Komuniti Pi Network Sabah">
     <h1>Pi Network Sabah Community</h1>
   </header>
- 
+
   <nav>
     <a href="#home">Utama</a>
     <a href="#group">WhatsApp Group</a>
@@ -118,47 +142,43 @@
       <p id="pi-value-usd">Nilai dalam USD: $0.00</p>
       <p id="pi-value-myr">Nilai dalam MYR: RM 0.00</p>
       <p id="error" class="error"></p>
-      <a href="https://www.bitgetapp.com/price/pi-network/usd" class="pi-price-button" target="_blank">Lihat Harga di Bitget</a>
+      <a href="https://www.bitgetapp.com/price/pi-network/usd" class="pi-price-button" target="_blank" rel="noopener noreferrer">Lihat Harga di Bitget</a>
+      <p style="font-size: 0.9em; color: #666;">*Harga dikemas kini setiap 30 saat secara automatik.</p>
     </div>
   </section>
 
   <section id="group">
     <h2>Group WhatsApp</h2>
     <p>Sertai komuniti kami di WhatsApp untuk info lebih pantas dan perbincangan aktif:</p>
-    <p><a href="https://chat.whatsapp.com/BYqODUXg1KVGPZpRuGloUB?mode=ac_c" target="_blank" style="color: #d84315; font-weight: bold;">Klik untuk sertai WhatsApp Group</a></p>
+    <p><a href="https://chat.whatsapp.com/BYqODUXg1KVGPZpRuGloUB?mode=ac_c" target="_blank" rel="noopener noreferrer" style="color: #d84315; font-weight: bold;">Klik untuk sertai WhatsApp Group</a></p>
   </section>
 
-   <section id="perkongsian">
-  <h2>Perkongsian Terkini</h2>
-  <div class="articles">
-    <article class="article-card">
-      <h3 class="article-title">
-        <span class="article-icon">📌</span>
-        <a href="https://docs.google.com/document/d/1C8vHlW0froccT7LemkxdLQ6G0YRJhF6eotl702xu9G0/edit?usp=drivesdk" 
-           title="Pelajari cara menggunakan Kod QR pada Wallet Pi Network">Cara menggunakan Kod QR pada Wallet</a>
-      </h3>
-      <p class="article-desc">Panduan langkah demi langkah untuk menggunakan Kod QR dalam aplikasi wallet Pi Network dengan selamat.</p>
-    </article>
-
-    <article class="article-card">
-      <h3 class="article-title">
-        <span class="article-icon">📌</span>
-        <a href="https://drive.google.com/file/d/1h9wnifoQNFrGUMs0KxxWDDeAn8EYqLz7/view?usp=drivesdk" 
-           title="Tips melindungi diri dari serangan web phishing">Cara melindungi diri anda daripada web phising</a>
-      </h3>
-      <p class="article-desc">Ketahui langkah-langkah penting untuk mengelakkan penipuan phishing yang menyasarkan pengguna Pi Network.</p>
-    </article>
-
-    <article class="article-card">
-      <h3 class="article-title">
-        <span class="article-icon">📌</span>
-        <a href="https://drive.google.com/file/d/1hJSZC2NmjzT42eLd9cSQy2Ke6CdmqOSp/view?usp=drivesdk" 
-           title="Amaran tentang laman web palsu yang menyamar sebagai Pi Network">Berhati-hati dengan web yang menyamar sebagai laman rasmi Pi Network</a>
-      </h3>
-      <p class="article-desc">Maklumat penting untuk mengenal pasti dan mengelakkan laman web penipuan yang menyamar sebagai laman rasmi Pi Network.</p>
-    </article>
-  </div>
-   </section>
+  <section id="perkongsian">
+    <h2>Perkongsian Terkini</h2>
+    <div class="articles">
+      <article class="article-card">
+        <h3 class="article-title">
+          <span class="article-icon">📌</span>
+          <a href="https://docs.google.com/document/d/1C8vHlW0froccT7LemkxdLQ6G0YRJhF6eotl702xu9G0/edit?usp=drivesdk" title="Pelajari cara menggunakan Kod QR pada Wallet Pi Network">Cara menggunakan Kod QR pada Wallet</a>
+        </h3>
+        <p class="article-desc">Panduan langkah demi langkah untuk menggunakan Kod QR dalam aplikasi wallet Pi Network dengan selamat.</p>
+      </article>
+      <article class="article-card">
+        <h3 class="article-title">
+          <span class="article-icon">📌</span>
+          <a href="https://drive.google.com/file/d/1h9wnifoQNFrGUMs0KxxWDDeAn8EYqLz7/view?usp=drivesdk" title="Tips melindungi diri dari serangan web phishing">Cara melindungi diri anda daripada web phising</a>
+        </h3>
+        <p class="article-desc">Ketahui langkah-langkah penting untuk mengelakkan penipuan phishing yang menyasarkan pengguna Pi Network.</p>
+      </article>
+      <article class="article-card">
+        <h3 class="article-title">
+          <span class="article-icon">📌</span>
+          <a href="https://drive.google.com/file/d/1hJSZC2NmjzT42eLd9cSQy2Ke6CdmqOSp/view?usp=drivesdk" title="Amaran tentang laman web palsu yang menyamar sebagai Pi Network">Berhati-hati dengan web yang menyamar sebagai laman rasmi Pi Network</a>
+        </h3>
+        <p class="article-desc">Maklumat penting untuk mengenal pasti dan mengelakkan laman web penipuan yang menyamar sebagai laman rasmi Pi Network.</p>
+      </article>
+    </div>
+  </section>
 
   <section id="contact">
     <h2>Hubungi Kami</h2>
@@ -173,31 +193,21 @@
   <script>
     let piPriceUSD = 0;
     let usdToMYR = 4.7;
-  async function fetchBitgetPrice() {
-  try {
-    const response = await fetch('https://api.bitget.com/api/spot/v1/market/ticker?symbol=PIUSDT');
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
-    const json = await response.json();
-    console.log("[DEBUG] Bitget JSON:", json);
-
-    if (!json.data || !json.data.last) throw new Error("Tiada data.last");
-    const latestPrice = parseFloat(json.data.last);
-    if (isNaN(latestPrice)) throw new Error("data.last bukan nombor");
-
-    piPriceUSD = latestPrice;
-    console.log(`[INFO] Harga Pi dikemas kini: $${piPriceUSD}`);
-    document.getElementById('error').innerText = '';
-
-  } catch (err) {
-    console.error("[ERROR] fetchBitgetPrice:", err);
-    document.getElementById('error').innerText =
-      '⚠️ Gagal ambil harga Bitget — gunakan anggaran $0.4665';
-    piPriceUSD = 0.4665;
-  }
-  }
-   
-   
+    async function fetchBitgetPrice() {
+      try {
+        const response = await fetch('https://api.bitget.com/api/spot/v1/market/ticker?symbol=PIUSDT');
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const json = await response.json();
+        if (!json.data || !json.data.last) throw new Error("Tiada data.last");
+        const latestPrice = parseFloat(json.data.last);
+        if (isNaN(latestPrice)) throw new Error("data.last bukan nombor");
+        piPriceUSD = latestPrice;
+        document.getElementById('error').innerText = '';
+      } catch (err) {
+        document.getElementById('error').innerText = '⚠️ Gagal ambil harga Bitget — gunakan anggaran $0.4665';
+        piPriceUSD = 0.4665;
+      }
+    }
 
     async function fetchExchangeRate() {
       try {
@@ -206,7 +216,6 @@
         const data = await response.json();
         usdToMYR = data.rates.MYR;
       } catch (error) {
-        console.error(error);
         document.getElementById('error').innerText = 'Gagal ambil kadar tukaran MYR. Menggunakan kadar default.';
       }
     }
