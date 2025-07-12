@@ -20,7 +20,7 @@
     }
     header img {
       max-width: 100px;
-      width: 20vw;
+      width: 40vw;
       border-radius: 50%;
       margin-bottom: 10px;
       border: 3px solid white;
@@ -173,34 +173,30 @@
   <script>
     let piPriceUSD = 0;
     let usdToMYR = 4.7;
- async function fetchBitgetPrice() {
-  try {
-    const response = await fetch('https://api.bitget.com/api/spot/v1/market/ticker?symbol=PIUSDT');
-    if (!response.ok) throw new Error('Gagal respon dari API Bitget');
+  async function fetchBitgetPrice() {
+  try {
+    const response = await fetch('https://api.bitget.com/api/spot/v1/market/ticker?symbol=PIUSDT');
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
-    const json = await response.json();
+    const json = await response.json();
+    console.log("[DEBUG] Bitget JSON:", json);
 
-    // Semak jika struktur data adalah betul
-    if (!json.data || !json.data.last) {
-      throw new Error('Data harga Pi tidak dijumpai dalam respon');
-    }
+    if (!json.data || !json.data.last) throw new Error("Tiada data.last");
+    const latestPrice = parseFloat(json.data.last);
+    if (isNaN(latestPrice)) throw new Error("data.last bukan nombor");
 
-    const latestPrice = parseFloat(json.data.last);
-    if (isNaN(latestPrice)) {
-      throw new Error('Harga yang diterima bukan nombor sah');
-    }
+    piPriceUSD = latestPrice;
+    console.log(`[INFO] Harga Pi dikemas kini: $${piPriceUSD}`);
+    document.getElementById('error').innerText = '';
 
-    piPriceUSD = latestPrice;
-    console.log(`[INFO] Harga Pi USD dikemas kini: $${piPriceUSD}`);
-    document.getElementById('error').innerText = ''; // Kosongkan ralat jika berjaya
-
-  } catch (error) {
-    console.error('[ERROR] Tidak dapat ambil harga dari Bitget:', error.message);
-    document.getElementById('error').innerText =
-      '⚠️ Gagal ambil harga dari Bitget. Menggunakan harga anggaran: $0.4665';
-    piPriceUSD = 0.4665; // Harga default jika gagal
-  }
- }
+  } catch (err) {
+    console.error("[ERROR] fetchBitgetPrice:", err);
+    document.getElementById('error').innerText =
+      '⚠️ Gagal ambil harga Bitget — gunakan anggaran $0.4665';
+    piPriceUSD = 0.4665;
+  }
+  }
+   
    
 
     async function fetchExchangeRate() {
