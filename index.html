@@ -101,7 +101,7 @@
 
   <head>
 
-    <title>Hello, World!</title>
+    </title>Salam komuniti pi network sabah! </title>
 
     <link rel="stylesheet" href="styles.css" />
 
@@ -117,7 +117,19 @@
 
   </body>
 
-</html>
+</html>function showTime() {
+
+	document.getElementById('currentTime').innerHTML = new Date().toUTCString();
+
+}
+
+showTime();
+
+setInterval(function () {
+
+	showTime();
+
+}, 1000);
  
   <nav>
     <a href="#home">Utama</a>
