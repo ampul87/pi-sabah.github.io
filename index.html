@@ -238,3 +238,54 @@
         document.getElementById('pi-value-usd').innerText = `Nilai dalam USD: $${totalValueUSD.toFixed(2)}`;
         document.g
        
+<script>
+  let piPriceUSD = 0;
+  let usdToMYR = 0;
+
+  async function fetchPiPrice() {
+    try {
+      const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=pi-network&vs_currencies=usd');
+      const data = await response.json();
+      return data['pi-network'].usd;
+    } catch (error) {
+      document.getElementById('error').innerText = 'Gagal mengambil harga Pi Network.';
+      return null;
+    }
+  }
+
+  async function fetchExchangeRate() {
+    try {
+      const response = await fetch('https://open.er-api.com/v6/latest/USD');
+      const data = await response.json();
+      return data.rates.MYR;
+    } catch (error) {
+      document.getElementById('error').innerText = 'Gagal mengambil kadar MYR.';
+      return null;
+    }
+  }
+
+  async function updatePrices() {
+    piPriceUSD = await fetchPiPrice();
+    usdToMYR = await fetchExchangeRate();
+    if (piPriceUSD && usdToMYR) {
+      const piPriceMYR = piPriceUSD * usdToMYR;
+      document.getElementById('pi-price-usd').innerText = `Harga Pi Network (USD): $${piPriceUSD.toFixed(4)}`;
+      document.getElementById('pi-price-myr').innerText = `Harga Pi Network (MYR): RM ${piPriceMYR.toFixed(4)}`;
+    }
+  }
+
+  function calculatePiValue() {
+    const piAmount = parseFloat(document.getElementById('pi-amount').value);
+    if (!isNaN(piAmount) && piAmount >= 0 && piPriceUSD && usdToMYR) {
+      const totalValueUSD = piAmount * piPriceUSD;
+      const totalValueMYR = totalValueUSD * usdToMYR;
+      document.getElementById('pi-value-usd').innerText = `Nilai dalam USD: $${totalValueUSD.toFixed(2)}`;
+      document.getElementById('pi-value-myr').innerText = `Nilai dalam MYR: RM ${totalValueMYR.toFixed(2)}`;
+      document.getElementById('error').innerText = '';
+    } else {
+      document.getElementById('error').innerText = 'Sila masukkan bilangan Pi Coin yang sah.';
+    }
+  }
+
+  window.onload = updatePrices;
+</script>
