@@ -199,15 +199,7 @@
     }
   }
 
-  window.onload = updatePrices;
-   </script>
-   
-{
-  "code":"00000",
-  "data":{
-    "symbol":"PIUSDT",
-    "last":"0.00215",
-    ...
-  }
-}
-  
+   window.onload = () => {
+  updatePrices();
+  setInterval(updatePrices, 10000); // setiap 10 saat
+};
