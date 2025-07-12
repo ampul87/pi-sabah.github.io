@@ -89,6 +89,64 @@
     }
   </style>
 </head>
+ .articles {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.article-card {
+  background-color: #ffffff;
+  padding: 1.5em;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.article-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.article-title {
+  margin: 0;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.article-title a {
+  color: #d84315;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.article-title a:hover {
+  text-decoration: underline;
+}
+
+.article-icon {
+  font-size: 1.2em;
+}
+
+.article-desc {
+  margin: 0.5em 0 0;
+  color: #555;
+  font-size: 0.95em;
+}
+
+@media (max-width: 600px) {
+  .article-card {
+    padding: 1em;
+  }
+  .article-title {
+    font-size: 1.1em;
+  }
+  .article-desc {
+    font-size: 0.9em;
+  }
+}
 <body>
   <header>
     <img src="1000103795.png" alt="Logo Pi Sabah">
@@ -128,18 +186,37 @@
     <p><a href="https://chat.whatsapp.com/BYqODUXg1KVGPZpRuGloUB?mode=ac_c" target="_blank" style="color: #d84315; font-weight: bold;">Klik untuk sertai WhatsApp Group</a></p>
   </section>
 
-  <section id="perkongsian">
-    <h2>Perkongsian Terkini</h2>
-    <article>
-      <h3>📌 <a href="https://docs.google.com/document/d/1C8vHlW0froccT7LemkxdLQ6G0YRJhF6eotl702xu9G0/edit?usp=drivesdk">Cara menggunakan Kod QR pada Wallet</a></h3>
+   <section id="perkongsian">
+  <h2>Perkongsian Terkini</h2>
+  <div class="articles">
+    <article class="article-card">
+      <h3 class="article-title">
+        <span class="article-icon">📌</span>
+        <a href="https://docs.google.com/document/d/1C8vHlW0froccT7LemkxdLQ6G0YRJhF6eotl702xu9G0/edit?usp=drivesdk" 
+           title="Pelajari cara menggunakan Kod QR pada Wallet Pi Network">Cara menggunakan Kod QR pada Wallet</a>
+      </h3>
+      <p class="article-desc">Panduan langkah demi langkah untuk menggunakan Kod QR dalam aplikasi wallet Pi Network dengan selamat.</p>
     </article>
-    <article>
-      <h3>📌 <a href="https://drive.google.com/file/d/1h9wnifoQNFrGUMs0KxxWDDeAn8EYqLz7/view?usp=drivesdk">Cara melindungi diri anda daripada web phising</a></h3>
+
+    <article class="article-card">
+      <h3 class="article-title">
+        <span class="article-icon">📌</span>
+        <a href="https://drive.google.com/file/d/1h9wnifoQNFrGUMs0KxxWDDeAn8EYqLz7/view?usp=drivesdk" 
+           title="Tips melindungi diri dari serangan web phishing">Cara melindungi diri anda daripada web phising</a>
+      </h3>
+      <p class="article-desc">Ketahui langkah-langkah penting untuk mengelakkan penipuan phishing yang menyasarkan pengguna Pi Network.</p>
     </article>
-    <article>
-      <h3>📌 <a href="https://drive.google.com/file/d/1hJSZC2NmjzT42eLd9cSQy2Ke6CdmqOSp/view?usp=drivesdk">BERHATI-HATI DENGAN WEB YANG MENYAMAR SEBAGAI LAMAN RASMI PI NETWORK</a></h3>
+
+    <article class="article-card">
+      <h3 class="article-title">
+        <span class="article-icon">📌</span>
+        <a href="https://drive.google.com/file/d/1hJSZC2NmjzT42eLd9cSQy2Ke6CdmqOSp/view?usp=drivesdk" 
+           title="Amaran tentang laman web palsu yang menyamar sebagai Pi Network">Berhati-hati dengan web yang menyamar sebagai laman rasmi Pi Network</a>
+      </h3>
+      <p class="article-desc">Maklumat penting untuk mengenal pasti dan mengelakkan laman web penipuan yang menyamar sebagai laman rasmi Pi Network.</p>
     </article>
-  </section>
+  </div>
+   </section>
 
   <section id="contact">
     <h2>Hubungi Kami</h2>
