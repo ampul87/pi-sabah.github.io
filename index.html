@@ -1,82 +1,101 @@
-
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ms">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pi Network Sabah Community</title>
   <style>
-    body {
+    :root {
+      --primary: #fdd835;
+      --accent: #f57c00;
+      --light: #fffde7;
+      --text: #333;
+    }
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #fff9e6;
-      color: #333;
+      background-color: var(--light);
+      color: var(--text);
+      line-height: 1.6;
     }
     header {
       background: linear-gradient(to right, #fceabb, #f8b500);
-      color: #000;
-      padding: 1.5em 1em;
       text-align: center;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      padding: 2em 1em;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
     header img {
       width: 100px;
       border-radius: 50%;
+      border: 4px solid white;
       margin-bottom: 10px;
-      border: 3px solid white;
+    }
+    header h1 {
+      font-size: 1.8em;
+      color: #000;
     }
     nav {
       display: flex;
       justify-content: center;
-      background-color: #fdd835;
-      padding: 0.5em;
       flex-wrap: wrap;
+      background-color: var(--primary);
+      padding: 0.8em;
     }
     nav a {
-      color: #000;
-      text-decoration: none;
       margin: 0.5em 1em;
+      text-decoration: none;
+      color: #000;
       font-weight: bold;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: white;
+      background-color: var(--accent);
+      padding: 0.3em 0.8em;
+      border-radius: 5px;
     }
     section {
-      padding: 2em;
-      margin: 1em;
-      background-color: #fffde7;
+      padding: 2em 1em;
+      max-width: 900px;
+      margin: auto;
+    }
+    .card {
+      background: white;
       border-radius: 10px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 1.5em;
+      margin-bottom: 1.5em;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-    footer {
-      text-align: center;
-      padding: 1em;
-      background-color: #ffe082;
-      position: static;
-      width: 100%;
-      bottom: 0;
-      box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+    .card h3 a {
+      text-decoration: none;
+      color: var(--accent);
     }
-    .calculator input, .calculator button {
-      padding: 10px;
-      margin: 5px 0;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      font-size: 1em;
+    .card h3 a:hover {
+      text-decoration: underline;
     }
-    .calculator button {
-      background-color: #4caf50;
-      color: white;
-      border: none;
-    }
-    .pi-price-button {
+    .button {
+      display: inline-block;
       background-color: #0288d1;
       color: white;
       padding: 10px 15px;
       border-radius: 5px;
       text-decoration: none;
-      display: inline-block;
-      margin-top: 10px;
+      margin-top: 1em;
+      transition: 0.3s;
     }
-    .error {
-      color: red;
+    .button:hover {
+      background-color: #0277bd;
+    }
+    footer {
+      background-color: var(--primary);
+      text-align: center;
+      padding: 1em;
+      font-size: 0.9em;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
     }
     @media (max-width: 600px) {
       nav { flex-direction: column; }
@@ -85,6 +104,7 @@
   </style>
 </head>
 <body>
+
   <header>
     <img src="1000103795.png" alt="Logo Pi Sabah">
     <h1>Pi Network Sabah Community</h1>
@@ -92,112 +112,55 @@
 
   <nav>
     <a href="#home">Utama</a>
-    <a href="#group">WhatsApp Group</a>
-    <a href="#perkongsian">Perkongsian Terkini</a>
-    <a href="#contact">Hubungi Kami</a>
+    <a href="#group">Group WhatsApp</a>
+    <a href="#perkongsian">Perkongsian</a>
+    <a href="#contact">Hubungi</a>
   </nav>
 
   <section id="home">
-    <h2>Selamat Datang!</h2>
-    <p>Ini adalah laman komuniti Pi Network di Sabah. Kami berkongsi info, perkembangan terkini, dan sokongan bersama dalam ekosistem Pi.</p>
-  </section>
-
-  <section class="calculator">
-    <h2>Kalkulator Nilai Pi</h2>
-    <label for="pi-amount">Masukkan Bilangan Pi Coin:</label>
-    <input type="number" id="pi-amount" placeholder="Contoh: 100" min="0">
-    <button onclick="calculatePiValue()">Kira Nilai</button>
-    <p id="pi-price-usd">Harga Pi Network (USD): Memuat...</p>
-    <p id="pi-price-myr">Harga Pi Network (MYR): Memuat...</p>
-    <p id="pi-value-usd">Nilai dalam USD: $0.00</p>
-    <p id="pi-value-myr">Nilai dalam MYR: RM 0.00</p>
-    <p id="error" class="error"></p>
-    <a href="https://www.bitgetapp.com/price/pi-network/usd" class="pi-price-button">Semak Harga Terkini di Bitget</a>
+    <div class="card">
+      <h2>Selamat Datang!</h2>
+      <p>Laman ini adalah pusat komuniti Pi Network di Sabah. Kami berkongsi berita, panduan, dan peluang terkini kepada semua pionir di negeri Sabah!</p>
+    </div>
   </section>
 
   <section id="group">
-    <h2>Group WhatsApp</h2>
-    <p>Sertai komuniti kami di WhatsApp untuk info lebih pantas dan perbincangan aktif:</p>
-    <p><a href="https://chat.whatsapp.com/BYqODUXg1KVGPZpRuGloUB?mode=ac_c" target="_blank" style="color: #d84315; font-weight: bold;">Klik untuk sertai WhatsApp Group</a></p>
+    <div class="card">
+      <h2>Group WhatsApp</h2>
+      <p>Sertai komuniti aktif kami di WhatsApp:</p>
+      <a href="https://chat.whatsapp.com/BYqODUXg1KVGPZpRuGloUB?mode=ac_c" target="_blank" class="button">Klik untuk Sertai Group</a>
+    </div>
   </section>
 
   <section id="perkongsian">
-  <h2>Perkongsian Terkini</h2>
+    <div class="card">
+      <h2>Perkongsian Terkini</h2>
 
-  <article>
-  <h3>📌<a href="https://docs.google.com/document/d/1C8vHlW0froccT7LemkxdLQ6G0YRJhF6eotl702xu9G0/edit?usp=drivesdk class=">Cara menggunakan Kod QR pada Wallet</a> </h3>
-     
-  </article>
+      <div class="card">
+        <h3>📌 <a href="https://docs.google.com/document/d/1C8vHlW0froccT7LemkxdLQ6G0YRJhF6eotl702xu9G0/edit?usp=drivesdk" target="_blank">Cara Menggunakan Kod QR Wallet</a></h3>
+      </div>
 
-  <article>
-  <h3>📌<a href="https://drive.google.com/file/d/1h9wnifoQNFrGUMs0KxxWDDeAn8EYqLz7/view?usp=drivesdk class=">Cara melindungi diri anda daripada web phising</a> </h3>
-    
-  </article>
+      <div class="card">
+        <h3>📌 <a href="https://drive.google.com/file/d/1h9wnifoQNFrGUMs0KxxWDDeAn8EYqLz7/view?usp=drivesdk" target="_blank">Cara Lindungi Diri dari Web Phishing</a></h3>
+      </div>
 
-  <article>
-  <h3>📌<a href="https://drive.google.com/file/d/1hJSZC2NmjzT42eLd9cSQy2Ke6CdmqOSp/view?usp=drivesdk class=">BERHATI-HATI DENGAN WEB YANG MENYAMAR SEBAGAI LAMAN RASMI PI NETWORK</a> </h3>
-    
-  </article>
-</section>
+      <div class="card">
+        <h3>📌 <a href="https://drive.google.com/file/d/1hJSZC2NmjzT42eLd9cSQy2Ke6CdmqOSp/view?usp=drivesdk" target="_blank">Amaran Web Menyamar Sebagai Laman Rasmi</a></h3>
+      </div>
+    </div>
+  </section>
 
-  
-   <section id="contact">
-  <h2>Hubungi Kami</h2>
-  <p><strong>📞 Telefon:</strong> <a href="tel:+60138295685">013-8295685</a></p>
-  <p><strong>📧 Email:</strong> <a href="mailto:ampul87@gmail.com">ampul87@gmail.com</a></p>
-   </section>
-  
+  <section id="contact">
+    <div class="card">
+      <h2>Hubungi Kami</h2>
+      <p><strong>📞 Telefon:</strong> <a href="tel:+60138295685">013-8295685</a></p>
+      <p><strong>📧 Email:</strong> <a href="mailto:ampul87@gmail.com">ampul87@gmail.com</a></p>
+    </div>
+  </section>
+
   <footer>
-    <p>&copy; 2025 Pi Network Sabah Community</p>
+    <p>&copy; 2025 Pi Network Sabah Community. Semua Hak Dilindungi.</p>
   </footer>
 
-  <script>
-    async function fetchPiPrice() {
-      try {
-        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=pi-network&vs_currencies=usd');
-        const data = await response.json();
-        return data['pi-network'].usd;
-      } catch (error) {
-        document.getElementById('error').innerText = 'Gagal mengambil harga Pi Network.';
-        return null;
-      }
-    }
-
-    async function fetchExchangeRate() {
-      try {
-        const response = await fetch('https://open.er-api.com/v6/latest/USD');
-        const data = await response.json();
-        return data.rates.MYR;
-      } catch (error) {
-        document.getElementById('error').innerText = 'Gagal mengambil kadar MYR.';
-        return null;
-      }
-    }
-
-    async function updatePrices() {
-      const piPriceUSD = await fetchPiPrice();
-      const usdToMYR = await fetchExchangeRate();
-      if (piPriceUSD && usdToMYR) {
-        const piPriceMYR = piPriceUSD * usdToMYR;
-        document.getElementById('pi-price-usd').innerText = `Harga Pi Network (USD): $${piPriceUSD.toFixed(4)}`;
-        document.getElementById('pi-price-myr').innerText = `Harga Pi Network (MYR): RM ${piPriceMYR.toFixed(4)}`;
-      }
-    }
-
-    async function calculatePiValue() {
-      const piAmount = document.getElementById('pi-amount').value;
-      const piPriceUSD = await fetchPiPrice();
-      const usdToMYR = await fetchExchangeRate();
-      if (piPriceUSD && usdToMYR && piAmount >= 0) {
-        const totalValueUSD = piAmount * piPriceUSD;
-        const totalValueMYR = totalValueUSD * usdToMYR;
-        document.getElementById('pi-value-usd').innerText = `Nilai dalam USD: $${totalValueUSD.toFixed(2)}`;
-        document.getElementById('pi-value-myr').innerText = `Nilai dalam MYR: RM ${totalValueMYR.toFixed(2)}`;
-        document.getElementById('error').innerText = '';
-      }
-    }
-
-    window.onload = updatePrices;
-  </script>
 </body>
 </html>
